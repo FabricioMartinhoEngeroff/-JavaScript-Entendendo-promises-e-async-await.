@@ -18,11 +18,9 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: var(--font-family);
-
     display: flex;
     justify-content: center;
     align-items: start;
-
     height: 100vh;
     gap: 27px;
     padding: 56px 0;
@@ -31,9 +29,9 @@ body {
 aside {
     background-color: var(--itens-background);
     border-radius: 10px;
-    height: 100%;
     padding: 40px 16px;
     text-align: center;
+    height: auto; /* Allow for dynamic height */
 }
 
 .lista-links {
@@ -63,6 +61,11 @@ aside {
     border: 1px solid var(--primary-color);
     padding: 12px 30px;
     border-radius: 8px;
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.link-destaque:hover {
+    background-color: var(--primary-color); /* Change on hover */
 }
 
 main {
@@ -70,7 +73,9 @@ main {
     border-radius: 10px;
     padding: 32px;
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     gap: 24px;
+    width: 100%; /* Full width for the main area */
 }
 
 h2 {
@@ -82,7 +87,7 @@ h2 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 24px
+    gap: 24px;
 }
 
 form div label {
@@ -93,7 +98,7 @@ form div label {
 }
 
 form div input,
-textarea {
+form div textarea {
     width: 100%;
     padding: 8px 16px;
     background-color: var(--secondary-color);
@@ -107,22 +112,22 @@ form div input {
     height: 39px;
 }
 
-texarea {
-    height: 161px;
+textarea {
+    height: 161px; /* Corrected typo from 'texarea' */
+}
+
+.lista-tags {
+    display: flex;
+    flex-wrap: wrap; /* Wrap tags to new lines */
+    gap: 10px; /* Space between tags */
 }
 
 .lista-tags li {
     display: flex;
     background-color: var(--secondary-color);
     color: var(--background-color);
-    gap: 10px;
     padding: 4px 8px;
     border-radius: 4px;
-}
-
-
-.lista-tags {
-    display: flex;
 }
 
 .container-botoes {
@@ -133,12 +138,13 @@ texarea {
 
 .container-botoes button {
     width: 50%;
-    padding: 12px 32px 12px 12px;
+    padding: 12px 32px;
     text-align: center;
     border-radius: 8px;
     font-family: var(--font-family);
     font-size: 18px;
     font-weight: 500;
+    transition: background-color 0.3s; /* Smooth hover effect */
 }
 
 .botao-descartar {
@@ -146,6 +152,10 @@ texarea {
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     position: relative;
+}
+
+.botao-descartar:hover {
+    background-color: var(--primary-color); /* Change on hover */
 }
 
 .botao-descartar::after {
@@ -167,6 +177,10 @@ texarea {
     color: var(--background-color);
     border: none;
     position: relative;
+}
+
+.botao-publicar:hover {
+    background-color: lighten(var(--primary-color), 10%); /* Change on hover */
 }
 
 .botao-publicar::after {
@@ -213,6 +227,11 @@ texarea {
     font-weight: 600;
     font-size: 18px;
     position: relative;
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.container-upload-imagem button:hover {
+    background-color: var(--primary-color); /* Change on hover */
 }
 
 .container-upload-imagem button::after {
@@ -226,7 +245,7 @@ texarea {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 8px
+    margin-left: 8px;
 }
 
 .container-imagem-nome {
@@ -234,4 +253,45 @@ texarea {
     gap: 8px;
     color: var(--secondary-color);
     font-size: 15px;
+}
+#tag-busca {
+    width: 100%; /* Largura total */
+    padding: 12px 16px; /* Espaçamento interno */
+    background-color: var(--secondary-color); /* Cor de fundo */
+    border: none; /* Sem borda */
+    border-radius: 8px; /* Cantos arredondados */
+    color: var(--text-color); /* Cor do texto */
+    font-family: var(--font-family); /* Fonte personalizada */
+    font-size: 18px; /* Tamanho da fonte */
+    display: flex; /* Flexbox para alinhamento do ícone */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaçamento entre ícone e texto */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+#tag-busca::placeholder {
+    color: var(--secondary-color); /* Cor do texto do placeholder */
+    opacity: 0.7; /* Transparência do placeholder */
+}
+
+#tag-busca:focus {
+    outline: none; /* Remove contorno padrão */
+    background-color: var(--primary-color); /* Cor de fundo ao focar */
+    color: var(--background-color); /* Cor do texto ao focar */
+}
+
+#tag-busca::before {
+    content: ""; /* Adiciona ícone */
+    background-image: url('./img/search-icon.svg'); /* Ícone de busca */
+    background-size: contain; /* Tamanho do ícone */
+    width: 20px; /* Largura do ícone */
+    height: 20px; /* Altura do ícone */
+    display: inline-block; /* Exibe o ícone inline */
+}
+
+.label-tag {
+    font-size: 18px; 
+    font-weight: 400; 
+    margin-bottom: 8px; 
+    color: var(--text-color); 
 }

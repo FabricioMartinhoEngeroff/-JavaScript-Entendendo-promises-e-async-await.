@@ -86,7 +86,7 @@ async function publicarProjeto(dadosProjeto) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("Dados enviados para o backend:", dadosProjeto);
-            resolve({ ok: true }); // Simula uma resposta bem-sucedida
+            resolve({ ok: true }); 
         }, 1000);
     });
 }
@@ -99,7 +99,7 @@ botaoPublicar.addEventListener("click", async (evento) => {
     const tagsProjeto = Array.from(listaTags.querySelectorAll("p")).map((tag) => tag.textContent);
 
     if (!nomeDoProjeto) {
-        alert("Por favor, preencha o nome do projeto."); // Alerta se o nome não estiver preenchido
+        alert("Por favor, preencha o nome do projeto."); 
         return;
     }
 
@@ -148,3 +148,18 @@ botaoDescartar.addEventListener("click", (evento) => {
 
     listaTags.innerHTML = "";
 })
+
+const inputTagBusca = document.getElementById("tag-busca"); 
+const listaProjetos = document.getElementById("lista-projetos"); 
+
+inputTagBusca.addEventListener("input", () => {
+    const tagBuscada = inputTagBusca.value.toLowerCase().trim(); 
+    const projetos = listaProjetos.querySelectorAll(".projeto");
+
+    projetos.forEach((projeto) => {
+        const tagsProjeto = JSON.parse(projeto.getAttribute("data-tags")); 
+        const tagsCorrespondem = tagsProjeto.some(tag => tag.toLowerCase().includes(tagBuscada));
+
+        projeto.style.display = tagsBuscadas === "" || tagsCorrespondem ? "list-item" : "none"; 
+    });
+});
