@@ -92,11 +92,26 @@ async function publicarProjeto(dadosProjeto) {
 }
 
 botaoPublicar.addEventListener("click", async (evento) => {
-    evento.preventDefault();
+    evento.preventDefault(); 
 
     const nomeDoProjeto = document.getElementById("nome").value;
     const descricaoDoProjeto = document.getElementById("descricao").value;
     const tagsProjeto = Array.from(listaTags.querySelectorAll("p")).map((tag) => tag.textContent);
+
+    if (!nomeDoProjeto) {
+        alert("Por favor, preencha o nome do projeto."); // Alerta se o nome não estiver preenchido
+        return;
+    }
+
+    if (!descricaoDoProjeto) {
+        alert("Por favor, preencha a descrição do projeto."); // Alerta se a descrição não estiver preenchida
+        return;
+    }
+
+    if (tagsProjeto.length === 0) {
+        alert("Por favor, adicione pelo menos uma tag."); // Alerta se não houver tags
+        return;
+    }
 
     const dadosProjeto = {
         nome: nomeDoProjeto,
