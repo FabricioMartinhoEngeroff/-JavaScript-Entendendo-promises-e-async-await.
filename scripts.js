@@ -82,6 +82,15 @@ listaTags.addEventListener("click", (evento) => {
 
 const botaoPublicar = document.querySelector(".botao-publicar");
 
+async function publicarProjeto(dadosProjeto) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Dados enviados para o backend:", dadosProjeto);
+            resolve({ ok: true }); // Simula uma resposta bem-sucedida
+        }, 1000);
+    });
+}
+
 botaoPublicar.addEventListener("click", async (evento) => {
     evento.preventDefault();
 
@@ -98,12 +107,7 @@ botaoPublicar.addEventListener("click", async (evento) => {
     console.log("Dados a serem enviados:", dadosProjeto);
 
     try {
-        const response = await new Promise((resolve) => {
-            setTimeout(() => {
-                console.log("Dados enviados para o backend:", dadosProjeto);
-                resolve({ ok: true }); 
-            }, 1000); 
-        });
+        const response = await publicarProjeto(dadosProjeto);
 
         if (response.ok) {
             console.log('Projeto publicado com sucesso!');
@@ -117,3 +121,15 @@ botaoPublicar.addEventListener("click", async (evento) => {
         alert('Erro na requisição. Verifique o console para mais detalhes.');
     }
 });
+
+botaoDescartar.addEventListener("click", (evento) => {
+    evento.preventDefault();
+
+    const formulario = document.querySelector("form");
+    formulario.reset();
+
+    imagemPrincipal.src = "./img/imagem1.png";
+    nomeDaImagem.textContent = "image_projeto.png";
+
+    listaTags.innerHTML = "";
+})
