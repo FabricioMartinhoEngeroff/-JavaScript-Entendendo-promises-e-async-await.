@@ -2,7 +2,6 @@ const emailsRegistrados = ["amandaExemplo@gmail.com", "maisaExemplo@gmail.com"];
 const nomesRegistrados = ["usuario1", "usuario2"];
 const tagsDisponiveis = ["Front-end", "Programação", "Data-Science", "Full-Stack", "HTML", "CSS", "Java-Script"];
 
-// Utilitários de validação
 const validacoes = {
     camposVazios(campos) {
         return campos.some(campo => !campo);
@@ -14,7 +13,6 @@ const validacoes = {
     }
 };
 
-// Funções de validação do formulário
 function validarFormulario() {
     const nome = document.getElementById('nome').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -33,7 +31,6 @@ function validarFormulario() {
     return true;
 }
 
-// Funções de verificação
 async function verificaEmailExistente(email) {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -58,7 +55,6 @@ async function verificaTagsDisponiveis(tagTexto) {
     });
 }
 
-// Manipulação de tags
 const inputTags = document.getElementById("input-tags");
 const listaTags = document.getElementById("lista-tags");
 
@@ -72,7 +68,6 @@ function adicionarTag(tagTexto) {
     inputTags.value = "";
 }
 
-// Event Listeners
 document.getElementById('formCadastro').addEventListener('submit', async (evento) => {
     evento.preventDefault();
     
@@ -131,7 +126,6 @@ listaTags?.addEventListener("click", (evento) => {
     }
 });
 
-// Publicação do projeto
 async function publicarProjeto(nome, descricao, tags) {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -159,7 +153,6 @@ botaoPublicar?.addEventListener("click", async (evento) => {
     }
 });
 
-// Feedback
 async function enviarFeedback(nome, email, mensagem) {
     return new Promise(resolve => {
         setTimeout(() => {
